@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: STD23107 - TD3
+  version: '1.0.3'
+servers:
+  - url: https://localhost.STD23107-TD1.com
+paths:
+  /meals:
+    get:
+      responses:
+        200:
+          description: List of meals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meal'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MealInput'
+        required: true
+      responses:
+        200:
+          description: Meal created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meal'
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Meal'
+        required: true
+      responses:
+        200:
+          description: Meal updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Meal'
+components:
+  schemas:
+    Meal:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+          format: float
+    MealInput:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+          format: float

@@ -1,0 +1,106 @@
+openapi: 3.0.3
+info:
+  title: STD23107 - TD4
+  version: '1.0.4'
+servers:
+  - url: https://localhost.STD23107-TD1.com
+paths:
+  /customers/{customerId}/orders:
+    get:
+      parameters:
+        - in: path
+          name: customerId
+          schema:
+            type: string
+          required: true
+      responses:
+        200:
+          description: List of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    post:
+      parameters:
+        - in: path
+          name: customerId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderInput'
+        required: true
+      responses:
+        200:
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+    put:
+      parameters:
+        - in: path
+          name: customerId
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      responses:
+        200:
+          description: Order updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        id:
+          type: string
+        reference:
+          type: string
+        meals:
+          type: array
+          items:
+            $ref: '#/components/schemas/MealWithQuantity'
+        orderDatetime:
+          type: string
+          format: date-time
+    OrderInput:
+      type: object
+      properties:
+        reference:
+          type: string
+        meals:
+          type: array
+          items:
+            $ref: '#/components/schemas/MealWithQuantity'
+    MealWithQuantity:
+      type: object
+      properties:
+        meal:
+          $ref: '#/components/schemas/Meal'
+        quantity:
+          type: integer
+    Meal:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        price:
+          type: number
+          format: float

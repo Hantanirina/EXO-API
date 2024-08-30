@@ -1,18 +1,29 @@
-Info:
-  nom: STD23107-TD1
+info:
+  title: STD23107-TD1
   version: 1.0.0
 
-Server:
-  URL: https://localhost.STD23107-TD1.com
+servers:
+  - url: https://localhost.STD23107-TD1.com
 
-Path:
+paths:
   /customers:
     get:
       responses:
-        200:
+        "200":
+          description: Liste des clients
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: "./Components/component.yaml"
+                  $ref: "#/components/schemas/Customer"
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
