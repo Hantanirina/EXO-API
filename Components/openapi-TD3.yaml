@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: STD23107 - TD3
-  version: '1.0.3'
+  version: 1.0.0
 servers:
   - url: https://localhost.STD23107-TD1.com
 paths:
@@ -15,13 +15,13 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Meal'
+                  $ref: "#/components/schemas/Meal"
     post:
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MealInput'
+              $ref: "#/components/schemas/MealInput"
         required: true
       responses:
         200:
@@ -29,13 +29,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Meal'
+                $ref: "#/components/schemas/Meal"
     put:
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Meal'
+              $ref: "#/components/schemas/Meal"
         required: true
       responses:
         200:
@@ -43,7 +43,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Meal'
+                $ref: "#/components/schemas/Meal"
 components:
   schemas:
     Meal:

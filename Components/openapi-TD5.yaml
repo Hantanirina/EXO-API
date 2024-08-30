@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: STD23107 - TD5
-  version: '1.0.5'
+  version: 1.0.5
 servers:
   - url: https://localhost.STD23107-TD1.com
 paths:
@@ -11,7 +11,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Customer'
+              $ref: "#/components/schemas/Customer"
         required: true
       responses:
         200:
@@ -19,13 +19,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: "#/components/schemas/Customer"
     patch:
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CustomerPatch'
+              $ref: "#/components/schemas/CustomerPatch"
         required: true
       responses:
         200:
@@ -33,7 +33,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customer'
+                $ref: "#/components/schemas/Customer"
 components:
   schemas:
     Customer:
